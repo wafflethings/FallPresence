@@ -26,8 +26,6 @@ namespace FallPresence
 
 
             //assign the stuff again
-            ignoreButton = Properties.Resources.btnignore;
-            ignoreButtonPressed = Properties.Resources.btnignore_pressed;
             updateButton = Properties.Resources.btnupdate;
             updateButtonPressed = Properties.Resources.btnupdate_pressed;
 
