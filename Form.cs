@@ -106,6 +106,7 @@ namespace FallPresence
             WebClient client = new WebClient();
             string ids = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/roundid");
             string names = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/roundname");
+            string versionGh = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/version");
             rpcLogo = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/iconname");
 
             if (int.Parse(versionGh) > version)
