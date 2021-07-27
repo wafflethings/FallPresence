@@ -13,8 +13,6 @@ namespace FallPresence
 {
     public partial class UpdateForm : Form
     {
-        Image ignoreButton;
-        Image ignoreButtonPressed;
         Image updateButton;
         Image updateButtonPressed;
         private const int CP_NOCLOSE_BUTTON = 0x200;
@@ -48,6 +46,7 @@ namespace FallPresence
         {
             get
             {
+                //no idea what it does but it gets rid of the x button
                 CreateParams myCp = base.CreateParams;
                 myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
                 return myCp;
