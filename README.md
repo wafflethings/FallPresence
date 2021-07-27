@@ -5,6 +5,7 @@ FallPresence is a Discord Rich Presence client for Fall Guys: Ultimate Knockout,
   * Shows time elapsed.
   * Saves entered information for your conveniece.
   * Updates round lists over the Internet, so you (most likely) never have to update again.
+  * No need to install anything else - if you have a Windows computer, it will run.
 
 # Setup
 1. Grab the latest [release](https://github.com/wafflethings/FallPresence/releases).
