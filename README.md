@@ -13,4 +13,11 @@ FallPresence is a Discord Rich Presence client for Fall Guys: Ultimate Knockout,
 3. Enter your Fall Guys username where prompted, and enter your log path (which FP reads from to find which level you are playing). If you don't know where this is, click on the Tutorial link and it will show you.
 4. Open Fall Guys, make sure that Game Activity is enabled on Discord, and press start.
 
+# Credits
+  * Waffle (me) - created the whole thing.
+  * cochiiあの (Github user cochiiAweno) - created the original Python script this is based on.
+
+# Issues?
+If you have issues with the program, create a Github issue, or message me on Discord (Waffle#2902) or [Twitter](https://twitter.com/home).
+
   ![](https://media.discordapp.net/attachments/505411346708430858/869574121065955338/unknown.png)
