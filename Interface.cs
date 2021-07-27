@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -90,9 +91,42 @@ namespace FallPresence
             System.IO.Directory.CreateDirectory(appPath + @"\Config");
             //this creates the roundid and roundname path, then tries to download it from github
             System.IO.Directory.CreateDirectory(appPath + @"\Resources");
+            downloadFromGithub();
 
             //this void checks if config files exist, if they are valid, and sets them to the variables
             TryLoadFromConfig();
+        }
+
+        public void downloadFromGithub()
+        {
+            WebClient client = new WebClient();
+            string ids = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/roundid.txt");
+            string names = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/roundname.txt");
+            //download strings, set to variable, then save it
+
+            FileInfo fi = new FileInfo(appPath + @"\Resources\roundid");
+
+            if (fi.Exists)
+            {
+                fi.Delete();
+            }
+
+            using (StreamWriter sw = fi.CreateText())
+            {
+                sw.Write(ids);
+            }
+
+            FileInfo fi2 = new FileInfo(appPath + @"\Resources\roundname");
+
+            if (fi2.Exists)
+            {
+                fi2.Delete();
+            }
+
+            using (StreamWriter sw2 = fi2.CreateText())
+            {
+                sw2.Write(names);
+            }
         }
 
         public void tutorial_Click(object sender, EventArgs e)
@@ -396,12 +430,12 @@ namespace FallPresence
                             //this reads the 2 dictionary files and turns them into a list, searches for the roundid in the roundid list and sets the presence
                             //this is, once again, unoptimised spaghetti code but this is fallguys rich presence so i dont care if it runs well
                             Console.WriteLine(roundId);
-                            using (StreamReader r = new StreamReader(appPath + @"\Resources\Dictionary\roundid.txt"))
+                            using (StreamReader r = new StreamReader(appPath + @"\Resources\roundid"))
                             {
                                 roundids = r.ReadToEnd();
                             }
 
-                            using (StreamReader r = new StreamReader(appPath + @"\Resources\Dictionary\roundname.txt"))
+                            using (StreamReader r = new StreamReader(appPath + @"\Resources\roundname"))
                             {
                                 roundnames = r.ReadToEnd();
                             }
