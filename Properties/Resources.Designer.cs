@@ -63,6 +63,26 @@ namespace FallPresence.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnignore {
+            get {
+                object obj = ResourceManager.GetObject("btnignore", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnignore_pressed {
+            get {
+                object obj = ResourceManager.GetObject("btnignore_pressed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnpicker {
             get {
                 object obj = ResourceManager.GetObject("btnpicker", resourceCulture);
@@ -143,6 +163,26 @@ namespace FallPresence.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnupdate {
+            get {
+                object obj = ResourceManager.GetObject("btnupdate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnupdate_pressed {
+            get {
+                object obj = ResourceManager.GetObject("btnupdate_pressed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fallpresence_bg {
             get {
                 object obj = ResourceManager.GetObject("fallpresence bg", resourceCulture);
@@ -156,6 +196,46 @@ namespace FallPresence.Properties {
         internal static System.Drawing.Bitmap fallpresence_bg_winform {
             get {
                 object obj = ResourceManager.GetObject("fallpresence bg winform", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fallpresence_winform_tutorial {
+            get {
+                object obj = ResourceManager.GetObject("fallpresence winform tutorial", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fallpresence_winform_updatebg {
+            get {
+                object obj = ResourceManager.GetObject("fallpresence_winform_updatebg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fallpresencelogo {
+            get {
+                object obj = ResourceManager.GetObject("fallpresencelogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap finalmainbg {
+            get {
+                object obj = ResourceManager.GetObject("finalmainbg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -118,20 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="fallpresence bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fallpresence bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnstop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnstop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fallpresence bg winform" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fallpresence bg winform.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btnpicker" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnpicker.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btnpicker_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnpicker_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btnpicker_pressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnpicker_pressed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnstart_pressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnstart_pressed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="btnstart" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnstart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,13 +130,46 @@
   <data name="btnstart_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnstart_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnstart_pressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnstart_pressed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnpicker_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnpicker_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnstop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnstop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnpicker_pressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnpicker_pressed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="btnstop_pressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnstop_pressed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnpicker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnpicker.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fallpresence_winform_updatebg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fallpresence winform updatebg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fallpresence winform tutorial" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fallpresence winform tutorial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fallpresencelogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fallpresencelogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fallpresence bg winform" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fallpresence bg winform.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fallpresence bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fallpresence bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnignore" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnignore.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnignore_pressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnignore_pressed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnupdate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnupdate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnupdate_pressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnupdate_pressed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="finalmainbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fallpresence winform detailbg withmodals fixed 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

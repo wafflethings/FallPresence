@@ -71,7 +71,7 @@ namespace FallPresence
             // 
             // tutorialPicbox
             // 
-            this.tutorialPicbox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tutorialPicbox.BackgroundImage")));
+            this.tutorialPicbox.BackgroundImage = global::FallPresence.Properties.Resources.fallpresence_winform_tutorial;
             this.tutorialPicbox.Location = new System.Drawing.Point(108, 75);
             this.tutorialPicbox.Name = "tutorialPicbox";
             this.tutorialPicbox.Size = new System.Drawing.Size(44, 12);
@@ -82,7 +82,7 @@ namespace FallPresence
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::FallPresence.Properties.Resources.finalmainbg;
             this.ClientSize = new System.Drawing.Size(164, 141);
             this.Controls.Add(this.tutorialPicbox);
             this.Controls.Add(this.picboxButtonStart);

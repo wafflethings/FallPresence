@@ -17,6 +17,9 @@ namespace FallPresence
 {
     public partial class FallPresence : Form
     {
+        //the SemVer of the version just without decimals
+        int version = 110;
+
         //get the path of the app, so we can do appPath + "/Resources/" later
         string appPath = Application.StartupPath;
 
@@ -41,6 +44,7 @@ namespace FallPresence
         bool pathIsGood = false;
         bool inStart = false;
         string currentlyInRound;
+        string rpcLogo;
 
         //the actual variables to be used by the rp thread
         string logPath;
@@ -89,7 +93,7 @@ namespace FallPresence
 
             //create the folder with config/save files, nothing will happen if it already exists
             System.IO.Directory.CreateDirectory(appPath + @"\Config");
-            //this creates the roundid and roundname path, then tries to download it from github
+            //this creates the roundid and roundname path, then tries to download it from github. dlfromgh also checks the version
             System.IO.Directory.CreateDirectory(appPath + @"\Resources");
             downloadFromGithub();
 
@@ -100,8 +104,16 @@ namespace FallPresence
         public void downloadFromGithub()
         {
             WebClient client = new WebClient();
-            string ids = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/roundid.txt");
-            string names = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/roundname.txt");
+            string ids = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/roundid");
+            string names = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/roundname");
+            rpcLogo = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/iconname");
+
+            if (int.Parse(versionGh) > version)
+            {
+                UpdateForm updateForm = new UpdateForm();
+                updateForm.Show();
+                this.Hide();
+            }
             //download strings, set to variable, then save it
 
             FileInfo fi = new FileInfo(appPath + @"\Resources\roundid");
@@ -171,6 +183,8 @@ namespace FallPresence
                         }
 
                         logPath = folderBrowserDialog.SelectedPath;
+
+                        verifyForButton();
                     }
                     else
                     {
@@ -472,10 +486,10 @@ namespace FallPresence
                 }
                 presence.Details = "In " + currentlyInRound;
                 Console.WriteLine(currentlyInRound);
-                presence.State = usernameStr;
+                presence.State = "Logged in as " + usernameStr;
 
                 assets = new Assets();
-                assets.LargeImageKey = "fallpresence_fg_logo";
+                assets.LargeImageKey = rpcLogo;
                 assets.LargeImageText = "Fall Guys: Ultimate Knockout via FallPresence";
 
                 presence.Assets = assets;

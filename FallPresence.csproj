@@ -65,19 +65,28 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateForm.Designer.cs">
+      <DependentUpon>UpdateForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form.resx">
       <DependentUpon>Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <EmbeddedResource Include="UpdateForm.resx">
+      <DependentUpon>UpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -121,6 +130,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btnstop_pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fallpresence winform updatebg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fallpresence winform tutorial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fallpresencelogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fallpresence.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fallpresence winform detailbg withmodals fixed 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnignore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnignore_pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnupdate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnupdate_pressed.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
