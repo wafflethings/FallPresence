@@ -462,7 +462,7 @@ namespace FallPresence
                                 for (string line3 = reader2.ReadLine(); line3 != null; line3 = reader2.ReadLine())
                                 {
                                     i++;
-                                    if (line3.Contains(roundId))
+                                    if (roundId.Contains(line3))
                                     {
                                         //for every line, it checks if it has a round id till it gets to the end, which is the current round
                                         lineOfLevel = i;
