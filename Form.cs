@@ -18,7 +18,7 @@ namespace FallPresence
     public partial class FallPresence : Form
     {
         //the SemVer of the version just without decimals
-        int version = 110;
+        int version = 120;
 
         //get the path of the app, so we can do appPath + "/Resources/" later
         string appPath = Application.StartupPath;
@@ -45,6 +45,8 @@ namespace FallPresence
         bool inStart = false;
         string currentlyInRound;
         string rpcLogo;
+        int currentRoundPlayerCount = -1;
+        string showName;
 
         //the actual variables to be used by the rp thread
         string logPath;
@@ -107,6 +109,8 @@ namespace FallPresence
             string ids = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/roundid");
             string names = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/roundname");
             string versionGh = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/version");
+            string shids = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/showids");
+            string shnames = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/shownames");
             rpcLogo = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/iconname");
 
             if (int.Parse(versionGh) > version)
@@ -139,6 +143,30 @@ namespace FallPresence
             using (StreamWriter sw2 = fi2.CreateText())
             {
                 sw2.Write(names);
+            }
+
+            FileInfo fi3 = new FileInfo(appPath + @"\Resources\showids");
+
+            if (fi3.Exists)
+            {
+                fi3.Delete();
+            }
+
+            using (StreamWriter sw3 = fi3.CreateText())
+            {
+                sw3.Write(shids);
+            }
+
+            FileInfo fi4 = new FileInfo(appPath + @"\Resources\shownames");
+
+            if (fi4.Exists)
+            {
+                fi4.Delete();
+            }
+
+            using (StreamWriter sw4 = fi4.CreateText())
+            {
+                sw4.Write(shnames);
             }
         }
 
@@ -415,6 +443,8 @@ namespace FallPresence
                 string logs;
                 string roundids;
                 string roundnames;
+                string showids;
+                string shownames;
                 //the log reading (pain)
                 //credits to cochii, who's python code i shamelessly stole and ported to c#. thank you cochii, very cool
                 var fs = new FileStream(logPath + @"\Player.log", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
@@ -424,10 +454,6 @@ namespace FallPresence
                 }
                 fs.Close();
 
-               // using (StreamReader r = new StreamReader(logPath + @"\Player.log"))
-                //{
-                 //   logs = r.ReadToEnd();
-                //}
                 //yoinked this from stackoverflow, no idea what it does but all i know is that it works
                 using (var reader = new StringReader(logs))
                 {
@@ -474,6 +500,52 @@ namespace FallPresence
                         {
                             currentlyInRound = "Lobby";
                         }
+                        if (line.Contains("currentParticipantCount="))
+                        {
+                            var splitAtIndexParticipantCount = line.IndexOf("currentParticipantCount=");
+                            var splitAtIndexRandSeed = line.IndexOf(" randSeed");
+                            string participantCount = line.Substring(splitAtIndexParticipantCount+24, splitAtIndexRandSeed - splitAtIndexParticipantCount - 24);
+
+                            if (currentlyInRound == "Lobby")
+                            {
+                                currentRoundPlayerCount = -1;
+                            }
+                            else
+                            {
+                                currentRoundPlayerCount = int.Parse(participantCount);
+                            }
+
+                        }
+                        if (line.Contains("[HandleSuccessfulLogin] Selected show is "))
+                        {
+                            var showId = line.Substring(line.IndexOf("[HandleSuccessfulLogin] Selected show is ") + "[HandleSuccessfulLogin] Selected show is ".Length);
+
+                            using (StreamReader r = new StreamReader(appPath + @"\Resources\showids"))
+                            {
+                                showids = r.ReadToEnd();
+                            }
+
+                            using (StreamReader r = new StreamReader(appPath + @"\Resources\shownames"))
+                            {
+                                shownames = r.ReadToEnd();
+                            }
+
+                            using (var reader2 = new StringReader(showids))
+                            {
+                                var i = 0;
+                                var lineOfShow = -1;
+                                for (string line3 = reader2.ReadLine(); line3 != null; line3 = reader2.ReadLine())
+                                {
+                                    i++;
+                                    if (line3.Contains(showId))
+                                    {
+                                        //for every line, it checks if it has a round id till it gets to the end, which is the current round
+                                        lineOfShow = i;
+                                    }
+                                }
+                                showName = GetLine(shownames, lineOfShow);
+                            }
+                        }
                     }
                 }
 
@@ -485,9 +557,19 @@ namespace FallPresence
                 {
                     currentlyInRound = "Lobby";
                 }
-                presence.Details = "In " + currentlyInRound;
+                //if you're in the lobby, dont show player or show info
+                if (currentRoundPlayerCount == -1 || currentlyInRound == "Lobby")
+                {
+                    presence.Details = "In " + currentlyInRound;
+                    presence.State = usernameStr;
+                }
+                else
+                {
+                    presence.Details = "In " + currentlyInRound + ", " + currentRoundPlayerCount + " players";
+                    presence.State = usernameStr + " in " + showName;
+                }
+                
                 Console.WriteLine(currentlyInRound);
-                presence.State = "Logged in as " + usernameStr;
 
                 assets = new Assets();
                 assets.LargeImageKey = rpcLogo;
