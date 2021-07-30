@@ -546,6 +546,10 @@ namespace FallPresence
                                 showName = GetLine(shownames, lineOfShow);
                             }
                         }
+                        if (line.Contains("[StateWaitingForRewards] Init: waitingForRewards"))
+                        {
+                            currentlyInRound = "Results";
+                        }
                     }
                 }
 
@@ -558,7 +562,7 @@ namespace FallPresence
                     currentlyInRound = "Lobby";
                 }
                 //if you're in the lobby, dont show player or show info
-                if (currentRoundPlayerCount == -1 || currentlyInRound == "Lobby")
+                if (currentRoundPlayerCount == -1 || currentlyInRound == "Lobby" || currentlyInRound == "Results")
                 {
                     presence.Details = "In " + currentlyInRound;
                     presence.State = usernameStr;
