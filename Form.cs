@@ -48,6 +48,9 @@ namespace FallPresence
         int currentRoundPlayerCount = -1;
         string showName;
 
+        //the player's state, e.g spectating, eliminated, etc 
+        string playerState = "";
+
         //the actual variables to be used by the rp thread
         string logPath;
         string usernameStr;
@@ -550,6 +553,13 @@ namespace FallPresence
                         {
                             currentlyInRound = "Results";
                         }
+                        if (line.Contains("Changing local player state to: Playing")) {
+                            playerState = "";
+                        }
+                        if (line.Contains("Changing local player state to: SpectatingEliminated"))
+                        {
+                            playerState = "(Eliminated)";
+                        }
                     }
                 }
 
@@ -570,7 +580,7 @@ namespace FallPresence
                 else
                 {
                     presence.Details = "In " + currentlyInRound + ", " + currentRoundPlayerCount + " players";
-                    presence.State = usernameStr + " in " + showName;
+                    presence.State = usernameStr + " in " + showName + playerState;
                 }
                 
                 Console.WriteLine(currentlyInRound);
