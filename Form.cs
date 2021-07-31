@@ -43,6 +43,7 @@ namespace FallPresence
         bool usernameNull = true;
         bool pathIsGood = false;
         bool inStart = false;
+        Thread rpcThread_;
         string currentlyInRound;
         string rpcLogo;
         int currentRoundPlayerCount = -1;
@@ -104,6 +105,14 @@ namespace FallPresence
 
             //this void checks if config files exist, if they are valid, and sets them to the variables
             TryLoadFromConfig();
+
+            //when the app is closed, so we dont keep the thread running
+            this.FormClosing += new FormClosingEventHandler(FormCloseThreadDisposal);
+        }
+
+        public void FormCloseThreadDisposal(object sender, EventArgs e)
+        {
+            rpcThread_.Abort();
         }
 
         public void downloadFromGithub()
@@ -411,8 +420,9 @@ namespace FallPresence
             }
             else
             {
-                //verified that it's closed, free to open now
+                //verified that it's open, free to open now
                 Thread rpcThread = new Thread(RpcThreadActions);
+                rpcThread_ = rpcThread;
                 rpcThread.Start();
             }
         }
