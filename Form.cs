@@ -48,6 +48,7 @@ namespace FallPresence
         string rpcLogo;
         int currentRoundPlayerCount = -1;
         string showName;
+        string currentArche;
 
         //the player's state, e.g spectating, eliminated, etc 
         string playerState = "";
@@ -123,6 +124,8 @@ namespace FallPresence
             string versionGh = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/version");
             string shids = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/showids");
             string shnames = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/shownames");
+            string arclvlids = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/ids4archetype");
+            string arclvlarcs = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/archetypes4archetype");
             rpcLogo = client.DownloadString("https://raw.githubusercontent.com/wafflethings/fallpresencestringhost/main/iconname");
 
             if (int.Parse(versionGh) > version)
@@ -179,6 +182,30 @@ namespace FallPresence
             using (StreamWriter sw4 = fi4.CreateText())
             {
                 sw4.Write(shnames);
+            }
+
+            FileInfo fi5 = new FileInfo(appPath + @"\Resources\ids4archetype");
+
+            if (fi5.Exists)
+            {
+                fi5.Delete();
+            }
+
+            using (StreamWriter sw5 = fi5.CreateText())
+            {
+                sw5.Write(arclvlids);
+            }
+
+            FileInfo fi6 = new FileInfo(appPath + @"\Resources\archetypes4archetype");
+
+            if (fi6.Exists)
+            {
+                fi6.Delete();
+            }
+
+            using (StreamWriter sw6 = fi6.CreateText())
+            {
+                sw6.Write(arclvlarcs);
             }
         }
 
@@ -458,6 +485,8 @@ namespace FallPresence
                 string roundnames;
                 string showids;
                 string shownames;
+                string archetypes4archetype;
+                string ids4archetype;
                 //the log reading (pain)
                 //credits to cochii, who's python code i shamelessly stole and ported to c#. thank you cochii, very cool
                 var fs = new FileStream(logPath + @"\Player.log", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
@@ -474,7 +503,7 @@ namespace FallPresence
                     {
                         if (line.Contains("roundID"))
                         {
-                            //line contains round id, woo
+                            //some line contains round id, woo
                             //doesnt mean we could stop looping, this could just be the first roundid from the top
                             //there has to be a better way to do this but i can not be bothered whatsoever
                             var splitAtIndexLoadingScreen = line.IndexOf("loadingScreen");
@@ -494,6 +523,16 @@ namespace FallPresence
                                 roundnames = r.ReadToEnd();
                             }
 
+                            using (StreamReader r = new StreamReader(appPath + @"\Resources\archetypes4archetype"))
+                            {
+                                archetypes4archetype = r.ReadToEnd();
+                            }
+
+                            using (StreamReader r = new StreamReader(appPath + @"\Resources\ids4archetype"))
+                            {
+                                ids4archetype = r.ReadToEnd();
+                            }
+
                             using (var reader2 = new StringReader(roundids))
                             {
                                 var i = 0;
@@ -508,7 +547,23 @@ namespace FallPresence
                                     }
                                 }
                                 currentlyInRound = GetLine(roundnames, lineOfLevel);
+                                using (var lineReader = new StringReader(ids4archetype))
+                                {
+                                    var i2 = 0;
+                                    var lineOfArche = -1;
+                                    for (string readLine = lineReader.ReadLine(); readLine != null; readLine = lineReader.ReadLine())
+                                    {
+                                        i2++;
+                                        if (readLine == roundId)
+                                        {
+                                            lineOfArche = i2;
+                                        }
+                                    }
+                                    currentArche = GetLine(archetypes4archetype, lineOfArche);
+                                }
                             }
+                            //ok so, here we get the archetypes from yet another list of all the levels i have to generate
+
                         } else if (line.Contains("Loading scene MainMenu"))
                         {
                             currentlyInRound = "Lobby";
@@ -581,22 +636,27 @@ namespace FallPresence
                 {
                     currentlyInRound = "Lobby";
                 }
+                assets = new Assets();
                 //if you're in the lobby, dont show player or show info
                 if (currentRoundPlayerCount == -1 || currentlyInRound == "Lobby" || currentlyInRound == "Results")
                 {
                     presence.Details = "In " + currentlyInRound;
                     presence.State = usernameStr;
+                    assets.SmallImageText = "";
+                    currentArche = "";
                 }
                 else
                 {
                     presence.Details = "In " + currentlyInRound + ", " + currentRoundPlayerCount + " players";
                     presence.State = usernameStr + " in " + showName + playerState;
+                    Console.WriteLine(currentArche);
+                    assets.SmallImageText = "In a " + char.ToUpper(currentArche.Substring(10)[0]) + currentArche.Substring(10).Substring(1) + " level";
                 }
                 
                 Console.WriteLine(currentlyInRound);
 
-                assets = new Assets();
                 assets.LargeImageKey = rpcLogo;
+                assets.SmallImageKey = currentArche;
                 assets.LargeImageText = "Fall Guys: Ultimate Knockout via FallPresence";
 
                 presence.Assets = assets;
