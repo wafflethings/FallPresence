@@ -18,7 +18,7 @@ namespace FallPresence
     public partial class FallPresence : Form
     {
         //the SemVer of the version just without decimals
-        int version = 120;
+        int version = 130;
 
         //get the path of the app, so we can do appPath + "/Resources/" later
         string appPath = Application.StartupPath;
