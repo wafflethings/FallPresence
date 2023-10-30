@@ -18,6 +18,4 @@ FallPresence is a Discord Rich Presence client for Fall Guys: Ultimate Knockout,
   * cochiiあの (Github user cochiiAweno) - created the original Python script this is based on.
 
 # Issues?
-If you have issues with the program, create a Github issue, or message me on Discord (Waffle#2902) or [Twitter](https://twitter.com/fgpancake).
-
-![image](https://user-images.githubusercontent.com/60797216/127636210-81f131bc-d838-492a-a250-658e4b0b1110.png)
+If you have issues with the program, create a Github issue, or message me on Discord (Waffle#2902) or [Twitter](https://twitter.com/).
